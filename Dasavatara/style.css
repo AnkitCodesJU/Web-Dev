@@ -1,0 +1,49 @@
+*{
+    margin: 0;padding: 0;
+}.avatars img{
+    width: 100px;
+}
+
+.container{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(12, 9, 9);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+.container .avatars{
+    transition: 0.5s;
+    filter: brightness(0);
+}
+.container .avatars:hover{
+    filter: brightness(1);
+    transform: translateZ(200px);
+}
+.container .avatars:hover + * {
+    filter: brightness(0.7);
+    transform: translateZ(150px) rotateY(40deg);
+}
+.container .avatars:has(+ * :hover){
+    filter: brightness(0.7);
+    transform: translateZ(150px) rotateY(-40deg);
+}
+.container .avatars:hover + * + *{
+    filter: brightness(0.5);
+    transform: translateZ(100px) rotateY(30deg);
+}
+.container .avatars:has(+ * + *:hover){
+    filter: brightness(0.5);
+    transform: translateZ(100px) rotateY(-30deg);
+}
+.container .avatars:hover + * + * + *{
+    filter: brightness(0.3);
+    transform: translateZ(70) rotateY(30deg);
+}
+.container .avatars:has(+ * + * + * :hover){
+    filter: brightness(0.3);
+    transform: translateZ(70px) rotateY(-30deg);
+0
